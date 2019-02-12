@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5a900a88-1835-4767-b549-8e93a178bee7" name="ikt" url="http://noppelmargus.ikt.khk.ee">
+        <fileTransfer host="noppelmargus.ikt.khk.ee" port="22" rootFolder="/home/noppelmargusiktk" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

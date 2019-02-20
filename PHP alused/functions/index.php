@@ -9,10 +9,10 @@ function paarsuseKontroll($arv) {
     if ($arv % 2 == 0){
     echo $arv.' on paaris <br> ';
     } else {
-        echo $arv.'on paaritu <br>';
+        echo $arv.' on paaritu <br>';
     }
 }
 //kutsume funktsioon tööle
-for($arv=0; $arv <=10: $arv++) {
+for($arv=0; $arv <=10; $arv++) {
         paarsuseKontroll($arv);
 }

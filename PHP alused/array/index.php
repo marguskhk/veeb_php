@@ -1,45 +1,60 @@
 <?php
-$peppa = array(
-    'nimi' => 'Peppa',
-    'sugu' => 'naine',
-    'vanus' => 4,
-    'pikkus' => 1.04
-);
-$george = array(
-    'nimi' => 'George',
-    'sugu' => 'mees',
-    'vanus' => 2,
-    'pikkus' => 0.95
-);
-foreach ($peppa as $nimi=>$vaartus){
-    echo $nimi.' - '.$vaartus.'<br>';
-}
-echo '<hr>';
-foreach ($george as $nimi=>$vaartus){
-    echo $nimi.' - '.$vaartus.'<br>';
-}
-echo '<hr>';
-echo $peppa['nimi'].' on '.$peppa['vanus'].' aastat vana<br>';
-echo $george['nimi'].' on '.$george['vanus'].' aastat vana<br>';
-echo '<hr>';
-$porsad = array();
-$porsad['peppa'] = $peppa;
-$porsad['george'] = $george;
-$porsad['peppa']['lemmik varv'] = 'punane';
-$porsad['george']['lemmik varv'] = 'sinine';
-foreach ($porsad as $porsaseNimi=>$porsaseAndmed){
-    if($porsaseAndmed['sugu'] == 'naine'){
-        echo '<p style="color: red">';
-    } else {
-        echo '<p style="color: blue">';
-    }
-    echo '<b>'.$porsaseNimi.'</b></p>';
-    echo '<ul>';
-    foreach ($porsaseAndmed as $nimetus=>$vaartus){
-        echo '<li>'.$nimetus.' - '.$vaartus.'</li>';
-    }
-    echo '</ul>';
-}
-    }
 
+$raamatud =array(
+                array(
+                    'nimi' => 'Eesti side ja interneti 100 aastat',
+                    'autor' => 'Jaak Ulman',
+                    'kategooria' => 'Ajalugu',
+                    'hind' => 15,00
+                    ),
+                array(
+                    'nimi' => 'Elanikust kodanikuks',
+                    'autor' => 'Ülo Vooglaid',
+                    'kategooria' => 'Humanitaarteadused',
+                    'hind' => 26,95
+    )
+);
 
+function tabeliPais($andmed)
+{
+    echo '<thead>';
+    echo '<tr>';
+    foreach ($andmed as $element) {
+        echo '<th>'.$element.'</th>';
+    }
+    echo '</tr>';
+    echo '</thead>';
+}
+
+function tabeliRida($andmed) {
+    echo '<tr>';
+    foreach ($andmed as $elemendiNimetus => $elemendiVaartus){
+        echo '<td>'.$elemendiVaartus.'</td>';
+    }
+    echo '</tr>';
+}
+
+function tabel($andmed) {
+    echo'<table border="1">';
+        tabeliPais(array_keys($andmed[0]));
+        echo '<tbody>';
+        foreach($andmed as $element) {
+            tabeliRida($element);
+        }
+        echo '</tbody>';
+    echo '</table>';
+}
+
+function vordleHinda($raamat1, $raamat2) {
+    if($raamat1['hind']== $raamat2['hind']) {
+        return 0;
+    } else if($raamat1['hind'] < $raamat2['hind'] ){
+        return -1;
+    }  else {
+        return 1;
+    }
+}
+
+usort($raamatud, 'vordleHinda');
+
+tabel($raamatud);

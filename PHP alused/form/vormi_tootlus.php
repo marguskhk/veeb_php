@@ -1,10 +1,15 @@
 <?php
-extract($_GET);
+
 //$nimi = $_GET['nimi'];
 //$parool = $_GET ['parool'];
-if(strlen($nimi) == 0 or strlen($parool)== 0 ) {
+
+foreach ($_GET as $nimetus => $vaartus) {
+    if (strlen($_GET[$nimetus]) == 0) {
         header('location:index.html');
-} else {
-echo 'Tere '. $nimi .'!<br>';
-echo 'Sinu parooliks on'. $parool;
+        exit;
+
+    }
+}
+foreach ($_GET as $nimetus => $vaartus) {
+    echo $nimetus.' => '.$vaartus.'<br>';
 }

@@ -1,40 +1,45 @@
 <?php
-    $porsad = array(
-        array(
-        'Peppa',
-        'naine',
-        4,
-        1.04
-    ),
-        array(
-            'George',
-            'mees',
-            2,
-            0.95
-
-        )
-    );
-
-
-    echo $porsad[0][0].'<br>';
-    echo $porsad[0][1].'<br>';
-    echo $porsad[0][2].'<br>';
-    echo $porsad[0][3].'<br>';
-
+$peppa = array(
+    'nimi' => 'Peppa',
+    'sugu' => 'naine',
+    'vanus' => 4,
+    'pikkus' => 1.04
+);
+$george = array(
+    'nimi' => 'George',
+    'sugu' => 'mees',
+    'vanus' => 2,
+    'pikkus' => 0.95
+);
+foreach ($peppa as $nimi=>$vaartus){
+    echo $nimi.' - '.$vaartus.'<br>';
+}
 echo '<hr>';
-
-    for($i=0; $i < count($porsad);$i++) {
-        for ($j = 0; $j < count($porsad); $j++) {
-            echo $porsad[$i][$i] . '<br>';
-        }
-    }
+foreach ($george as $nimi=>$vaartus){
+    echo $nimi.' - '.$vaartus.'<br>';
+}
 echo '<hr>';
-
-    foreach ($porsad as $porsas) {
-            foreach ($porsas as $element) {
-                echo $element.'<br>';
+echo $peppa['nimi'].' on '.$peppa['vanus'].' aastat vana<br>';
+echo $george['nimi'].' on '.$george['vanus'].' aastat vana<br>';
+echo '<hr>';
+$porsad = array();
+$porsad['peppa'] = $peppa;
+$porsad['george'] = $george;
+$porsad['peppa']['lemmik varv'] = 'punane';
+$porsad['george']['lemmik varv'] = 'sinine';
+foreach ($porsad as $porsaseNimi=>$porsaseAndmed){
+    if($porsaseAndmed['sugu'] == 'naine'){
+        echo '<p style="color: red">';
+    } else {
+        echo '<p style="color: blue">';
     }
-    echo '<hr>';
+    echo '<b>'.$porsaseNimi.'</b></p>';
+    echo '<ul>';
+    foreach ($porsaseAndmed as $nimetus=>$vaartus){
+        echo '<li>'.$nimetus.' - '.$vaartus.'</li>';
+    }
+    echo '</ul>';
+}
     }
 
 

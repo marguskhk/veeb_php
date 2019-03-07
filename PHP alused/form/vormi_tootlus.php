@@ -10,6 +10,9 @@ foreach ($_GET as $nimetus => $vaartus) {
 
     }
 }
+
 foreach ($_GET as $nimetus => $vaartus) {
-    echo $nimetus.' => '.$vaartus.'<br>';
+    echo 'Ruumala '.$nimetus.' on '.$sum.'<br>';
 }
+
+

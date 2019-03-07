@@ -1,5 +1,6 @@
 <?php
-require_once 'db_conf.php';
+
+
 
 function dbConnect($h, $u, $p, $db) {
     $connect = mysqli_connect($h, $u, $p, $db);
@@ -23,21 +24,15 @@ function query($conn, $sql) {
 function dataQuery($conn, $sql) {
     $data = array();
     $result = query($conn, $sql);
-        if($result != false){
+    if($result != false){
 
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                $data[] = $row;
-            }
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $data[] = $row;
+        }
 
-        }
-        if(count($data) == 0) {
-            return false;
-        }
-            return $data;
+    }
+    if(count($data) == 0) {
+        return false;
+    }
+    return $data;
 }
-
-$connectIKT = dbConnect(HOST, USER, PASS, DB);
-$sql = 'SELECT NOW()';
-$sqlResult = dataQuery($connectIKT, $sql);
-echo '<pre>';
-print_r($sqlResult);

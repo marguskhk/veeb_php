@@ -28,45 +28,59 @@ class Session
     function checkSession()
     {
         $this->clearSessions();
-
+        //sessiooni võti pole kaasaantud, ja anonyymne on olemas - luua uus sessioon
         if($this->sid === false and $this->anonymous)
         {
             $this->createSession();
         }
-
+        //kui võti on antud, siis tuleb kontrollida, kas sessioon on lahti - kui juba timeout, siis tuleb uue luua
         if($this->sid !== false)
         {
             $sql = 'SELECT * FROM session WHERE sid='.fixDb($this->sid);
             $res = $this->db->getData($sql);
-
+            //kui andmebaasist päringut ei tule
             if($res == false)
             {
                 if($this->anonymous)
                 {
+                    //anonüümsele valmistatakse uus sessioon
                     $this->createSession();
-                } else {
+                }
+                else
+                {
+                    //muidu sessioon kustutakse
                     $this->sid = false;
                     $this->http->del('sid');
                 }
+                //anonüümse sessiooni või kustutatud sessiooni korral kasutajal ei ole id-d ega ka rolli
                 define('ROLE_ID', 0);
                 define('USER_ID', 0);
-            } else {
+            }
+            //sessiooni muutujate sisse lugemine andmebaasi
+            else
+            {
                 $vars = @unserialize($res[0]['svars']);
                 if(!is_array($vars))
                 {
                     $vars = array();
                 }
                 $this->vars = $vars;
+
+                //muidu andmebaasis saame vajaliku andmed kätte kasutaja rolli ja id kohta
                 $user_data = unserialize($res[0]['user_data']);
                 define('ROLE_ID', $user_data['role_id']);
                 define('USER_ID', $user_data['user_id']);
                 $this->user_data = $user_data;
             }
-        } else {
+
+        }
+        //kui üldse sessiooni võti puudub, siis alati on olemas need 2 konstandi
+        else
+        {
             define('ROLE_ID', 0);
             define('USER_ID', 0);
         }
-    }
+    }//checkSession
 
     function clearSessions()
     {

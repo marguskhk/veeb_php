@@ -10,6 +10,7 @@ $fn = CONTROLLER_DIR.str_replace('.', '/', $controller).'.php';
 if(file_exists($fn) and is_file($fn) and is_readable($fn))
 {
     require_once($fn);
+
 } else {
     $fn = CONTROLLER_DIR.DEFAULT_CONTROLLER.'.php';
     $http->set('controller', DEFAULT_CONTROLLER);

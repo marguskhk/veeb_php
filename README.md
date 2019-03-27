@@ -1,4 +1,6 @@
-# veeb_php
-## Kasutatav tarkvara 
-https://help.github.com/articles/basic-writing-and-formatting-syntax/
-https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+# Programmeerimise lisaoskus
+## Veebiprogrammeerimine
+Veebiprogrammeerimisega seotud kursus valikaine suunas IS/ISP õpilastele
+## Kasutatav tarkvara
+* [PhpStorm](https://www.jetbrains.com/phpstorm/download/#section=windows) - IDE programmeerimiseks
+* [git](https://git-scm.com/download/win) - VCS süsteem

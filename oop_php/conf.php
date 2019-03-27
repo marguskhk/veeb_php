@@ -9,7 +9,7 @@ setlocale(LC_TIME, 'Estonia');
 error_reporting(E_ALL);
 
 // app constants
-define('SITENAME', 'Site real name');
+//define('SITENAME', 'Site real name');
 
 // model file system constants
 define('MODEL_DIR', BASE_DIR.'model/');
@@ -31,15 +31,15 @@ $siteRoles = array(
 
 define('DEFAULT_CONTROLLER', 'default');
 
+// import support functions
+require_once(LIB_DIR.'utils.php');
+
 // import model classes
 require_once(MODEL_DIR.'Template.php');
 require_once(MODEL_DIR.'Http.php');
 require_once(MODEL_DIR.'Mysql.php');
 require_once(MODEL_DIR.'Linkobject.php');
 require_once(MODEL_DIR.'Session.php');
-
-// import support functions
-require_once(LIB_DIR.'utils.php');
 
 // import database configuration
 require_once(BASE_DIR.'db_conf.php');
